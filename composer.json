@@ -1,0 +1,26 @@
+{
+  "name": "comphp/extensible",
+  "description": "A lightweight, modular extensibility framework for PHP applications.",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Neuron\\Extensibility\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "NeuronTests\\Extensibility\\": "test/"
+    }
+  },
+  "require": {
+    "php": "^8.4",
+    "psr/event-dispatcher": "^1.0",
+    "psr/log": "^3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^12.0",
+    "php-di/php-di": "^7.0",
+    "comphp/logging": "^0.1",
+    "comphp/events": "v0.2"
+  }
+}
