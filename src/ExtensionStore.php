@@ -16,7 +16,7 @@ use Psr\Log\LoggerInterface;
  *
  * @package Neuron\Extensibility
  */
-class ExtensionStore
+class ExtensionStore implements ExtensionsInterface
 {
     /** @var ExtensionTypeRegistry Registry for extension types */
     public readonly ExtensionTypeRegistry $typeRegistry;
@@ -56,10 +56,23 @@ class ExtensionStore
     }
 
     /**
-     * Checks if an extension exists in the registry.
-     *
-     * @param string $className The extension class name.
-     * @return bool
+     * @inheritDoc
+     */
+    public function getRegistry(): ExtensionRegistry
+    {
+        return $this->registry;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getTypeRegistry(): ExtensionTypeRegistry
+    {
+        return $this->typeRegistry;
+    }
+
+    /**
+     * @inheritDoc
      */
     public function has(string $className): bool
     {
@@ -78,9 +91,7 @@ class ExtensionStore
         if (!$this->has($className)) {
             throw new ExtensionNotLoadedException($className);
         }
-        $extension = $this->registry->get($className);
-
-        return $extension;
+        return $this->registry->get($className);
     }
 
     /**
@@ -114,11 +125,7 @@ class ExtensionStore
     }
 
     /**
-     * Creates a new instance of an extension.
-     *
-     * @param string $className The class name of the extension.
-     * @param array $parameters Parameters for instantiation.
-     * @return object The instantiated extension.
+     * @inheritDoc
      * @throws ExtensionNotLoadedException
      * @throws ExtensionSingletonException
      * @throws MissingDependenciesException
@@ -138,11 +145,7 @@ class ExtensionStore
     }
 
     /**
-     * Retrieves a singleton extension instance.
-     *
-     * @template T
-     * @param class-string<T> $className
-     * @return T
+     * @inheritDoc
      * @throws ExtensionNotLoadedException
      * @throws ExtensionSingletonException
      * @throws MissingDependenciesException
