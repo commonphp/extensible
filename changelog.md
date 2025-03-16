@@ -1,6 +1,12 @@
 # Changelog
 
-## [0.1.0] - 2025-03-21
+## [0.1.1] - 2025-03-16
+
+### Added
+- **`ExtensionsInterface`** class for providing a service-container friendly interface
+- Corrected date for 0.1.0 in changelog
+
+## [0.1.0] - 2025-03-16
 
 ### Added
 - **`AbstractExtension`** class for defining extensions, including metadata (name, version, description, dependencies, etc.).
